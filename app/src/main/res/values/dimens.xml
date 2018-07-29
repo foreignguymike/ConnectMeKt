@@ -2,9 +2,11 @@
 <resources>
 
     <!-- text -->
-    <dimen name="title_screen_header">48sp</dimen>
+    <dimen name="titleScreenHeader">48sp</dimen>
+    <dimen name="headerTextSize">18sp</dimen>
 
     <!-- views -->
-    <dimen name="level_list_item_padding">20dp</dimen>
+    <dimen name="viewPadding">20dp</dimen>
+    <dimen name="headerHeight">60dp</dimen>
 
 </resources>

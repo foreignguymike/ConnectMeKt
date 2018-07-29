@@ -5,4 +5,6 @@
     <string name="start">Start</string>
     <string name="complete">Complete</string>
     <string name="best">Best</string>
+    <string name="level_select">Level Select</string>
+    <string name="level_number">Level %d</string>
 </resources>

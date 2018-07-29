@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
         android:text="@string/connect_me"
-        android:textSize="@dimen/title_screen_header"
+        android:textSize="@dimen/titleScreenHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

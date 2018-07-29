@@ -6,6 +6,7 @@ import android.support.annotation.ColorRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,11 +44,14 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<Strin
 }
 
 class LevelAdapter(private val context: Context, private val data: List<String>, private val itemClickListener: ItemClickListener<String>) : RecyclerView.Adapter<LevelAdapter.LevelViewHolder>() {
+    private var numViewHolders: Int = 0
     interface ItemClickListener<in T> {
         fun onItemClick(data: T, index: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LevelViewHolder {
+        numViewHolders++
+        Log.d("LevelAdapter", "onCreateViewHolder numViewHolders = $numViewHolders")
         return LevelViewHolder(LayoutInflater.from(context).inflate(R.layout.level_list_item, parent, false))
     }
 
