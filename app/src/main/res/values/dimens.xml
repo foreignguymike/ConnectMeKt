@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- text -->
+    <dimen name="title_screen_header">48sp</dimen>
+
+    <!-- views -->
+    <dimen name="level_list_item_padding">20dp</dimen>
+
+</resources>
