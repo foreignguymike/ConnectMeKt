@@ -2,11 +2,8 @@ package distraction.com.connectme.fragments
 
 import android.content.Context
 import android.os.Bundle
-import android.support.annotation.ColorRes
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +15,6 @@ import kotlinx.android.synthetic.main.level_list_item.view.*
 class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<String> {
 
     companion object {
-        @JvmStatic
         fun newInstance() = LevelSelectFragment()
     }
 
@@ -32,7 +28,6 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<Strin
         val data: MutableList<String> = MutableList(200, {
             "Level ${it + 1}"
         })
-
 
         levelRecyclerView.adapter = LevelAdapter(context, data, this)
         levelRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -77,5 +72,3 @@ class LevelAdapter(private val context: Context, private val data: List<String>,
         }
     }
 }
-
-fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)

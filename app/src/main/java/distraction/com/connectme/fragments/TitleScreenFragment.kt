@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.fragment_title_screen.*
 class TitleScreenFragment : BaseFragment() {
 
     companion object {
-        @JvmStatic
         fun newInstance() = TitleScreenFragment()
     }
 

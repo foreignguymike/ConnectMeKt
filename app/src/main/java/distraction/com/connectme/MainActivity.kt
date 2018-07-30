@@ -2,21 +2,11 @@ package distraction.com.connectme
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import distraction.com.connectme.fragments.BaseFragment
 import distraction.com.connectme.fragments.TitleScreenFragment
+import distraction.com.connectme.fragments.transaction
 import kotlinx.android.synthetic.main.activity_main.*
-
-fun FragmentManager.transaction(layout: Int, f: Fragment, tag: String = f.javaClass.simpleName, backstack: Boolean = true, animate: Boolean = true) {
-    beginTransaction()
-            .apply {
-                if (animate) setCustomAnimations(R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right)
-                if (backstack) addToBackStack(tag)
-            }
-            .replace(layout, f)
-            .commit()
-}
 
 class MainActivity : AppCompatActivity(), BaseFragment.FragmentListener {
 

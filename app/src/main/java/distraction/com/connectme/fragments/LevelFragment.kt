@@ -1,7 +1,6 @@
 package distraction.com.connectme.fragments
 
 import android.graphics.Point
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,20 +14,12 @@ private const val KEY_DATA = "data"
 private const val SCREEN_PADDING_RATIO = 0.80f
 private const val CELL_PADDING_RATIO = 0.05f
 
-fun View.setBackgroundTint(color: Int) {
-    val drawable = background
-    if (drawable is GradientDrawable) {
-        drawable.setColor(color)
-    }
-}
-
 class LevelFragment : BaseFragment() {
     private val data by lazy<LevelData> {
         arguments.let { it.getParcelable(KEY_DATA) }
     }
 
     companion object {
-        @JvmStatic
         fun newInstance(data: LevelData) = LevelFragment().apply {
             arguments = Bundle().apply { putParcelable(KEY_DATA, data) }
         }
