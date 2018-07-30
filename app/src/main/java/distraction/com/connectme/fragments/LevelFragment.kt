@@ -15,7 +15,7 @@ private const val KEY_DATA = "data"
 
 class LevelFragment : BaseFragment(), GridListener {
     private val data by lazy<LevelData> {
-        arguments.let { it.getParcelable(KEY_DATA) }
+        arguments.getParcelable(KEY_DATA)
     }
 
     private var moves: Int = 0
@@ -56,7 +56,7 @@ class LevelFragment : BaseFragment(), GridListener {
         Log.e("TAG", "solved = $solved")
     }
 
-    fun init() {
+    private fun init() {
         grid.createGrid(data.numRows, data.numCols, data.grid)
         moves = 0
         movesTextView.text = resources.getString(R.string.moves_number, (moves).toString())

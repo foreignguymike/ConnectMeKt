@@ -6,12 +6,11 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.TranslateAnimation
+import android.view.animation.*
 import android.widget.FrameLayout
 import android.widget.GridLayout
 import distraction.com.connectme.R
 import distraction.com.connectme.utils.*
-import kotlin.properties.Delegates
 
 private const val SCREEN_PADDING_RATIO = 0.80f
 private const val CELL_PADDING_RATIO = 0.05f
@@ -26,6 +25,7 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
 
     private var gridListener: GridListener? = null
     private lateinit var grid: IntArray
+    private var selectedView: View? = null
 
     init {
         if (context !is Activity) {
@@ -70,10 +70,17 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
             }
             container.addView(view)
             addView(container)
+            ScaleAnimation(
+                    0f, 1f, 0f, 1f,
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_PARENT, 0.5f).apply {
+                duration = DURATION * 2
+                startOffset = index * DURATION / 2
+                view.startAnimation(this)
+            }
         }
     }
 
-    var selectedView: View? = null
     override fun onTouch(view: View?, e: MotionEvent?): Boolean {
         when (e?.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -103,7 +110,7 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
         return false
     }
 
-    fun swap(view1: View, view2: View) {
+    private fun swap(view1: View, view2: View) {
         val index1 = view1.tag as Int
         val index2 = view2.tag as Int
         removeView(view1)
