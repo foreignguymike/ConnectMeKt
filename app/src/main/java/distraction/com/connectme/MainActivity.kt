@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import distraction.com.connectme.fragments.BaseFragment
 import distraction.com.connectme.fragments.TitleScreenFragment
-import distraction.com.connectme.fragments.transaction
+import distraction.com.connectme.utils.transaction
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BaseFragment.FragmentListener {

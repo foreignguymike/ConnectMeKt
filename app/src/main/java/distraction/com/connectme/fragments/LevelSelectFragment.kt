@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import distraction.com.connectme.R
 import distraction.com.connectme.data.LevelData
+import distraction.com.connectme.utils.getColorCompat
 import kotlinx.android.synthetic.main.fragment_level_select.*
 import kotlinx.android.synthetic.main.level_list_item.view.*
 

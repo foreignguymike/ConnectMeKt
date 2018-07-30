@@ -1,4 +1,4 @@
-package distraction.com.connectme.fragments
+package distraction.com.connectme.utils
 
 import android.app.Activity
 import android.content.Context
@@ -28,8 +28,19 @@ fun View.setBackgroundTint(color: Int) {
     }
 }
 
+inline fun View.containsPoint(x: Float, y: Float, f: (View) -> Unit) {
+    val pos = IntArray(2).apply { getLocationInWindow(this) }
+    if (x > pos[0] && x < pos[0] + width && y > pos[1] && y < pos[1] + height) {
+        f(this)
+    }
+}
+
+fun View.setPadding(padding: Int) {
+    setPadding(padding, padding, padding, padding)
+}
+
 fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
 
-fun Activity.getScreenSize(): Point = Point().apply { windowManager.defaultDisplay.getSize(this) }
+fun Activity.getScreenSize() = Point().apply { windowManager.defaultDisplay.getSize(this) }
 
-inline fun <T> forEach(vararg elements: T, f: (T) -> Unit) = elements.forEach { f(it) }
+inline fun <T> forEach(vararg elements: T, func: (T) -> Unit) = elements.forEach { func(it) }

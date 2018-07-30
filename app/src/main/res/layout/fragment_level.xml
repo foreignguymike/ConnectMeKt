@@ -32,10 +32,10 @@
         style="@style/roundRectTextView"
         android:layout_marginLeft="20dp"
         android:text="@string/target_number"
+        app:layout_constraintBottom_toTopOf="@id/grid"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/headerTextView"
-        app:layout_constraintBottom_toTopOf="@id/gridLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/headerTextView"/>
 
     <TextView
         android:id="@+id/bestTextView"
@@ -56,8 +56,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/targetTextView"/>
 
-    <GridLayout
-        android:id="@+id/gridLayout"
+    <distraction.com.connectme.views.Grid
+        android:id="@+id/grid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_rect"
