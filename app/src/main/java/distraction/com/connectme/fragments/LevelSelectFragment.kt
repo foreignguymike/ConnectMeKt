@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import distraction.com.connectme.R
 import distraction.com.connectme.data.LevelData
+import distraction.com.connectme.utils.Res
 import distraction.com.connectme.utils.getColorCompat
 import kotlinx.android.synthetic.main.fragment_level_select.*
 import kotlinx.android.synthetic.main.level_list_item.view.*
@@ -26,7 +27,9 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<Strin
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val data: MutableList<String> = MutableList(200, {
+        Res.init(context)
+
+        val data: MutableList<String> = MutableList(Res.levelData!!.size, {
             "Level ${it + 1}"
         })
 
@@ -38,7 +41,11 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<Strin
         fragmentListener?.changeFragment(LevelFragment.newInstance(createLevelData(index + 1)))
     }
 
-    fun createLevelData(level: Int) = LevelData(level, 3, 3, intArrayOf(2, 0, 0, 1, 2, 0, 1, 1, 1), 3, 0)
+    fun createLevelData(level: Int): LevelData {
+        with (Res.levelData!![level]) {
+            return LevelData(level, numRows, numCols, grid, target, 0)
+        }
+    }
 
 }
 
