@@ -1,0 +1,24 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="30dp"
+        android:height="30dp"
+        android:viewportHeight="30.0"
+        android:viewportWidth="30.0">
+    <group android:name="ring">
+        <path
+            android:name="circle"
+            android:strokeColor="#ffffff"
+            android:strokeWidth="2"
+            android:pathData="
+            M 24,10
+            a 10,10 0 1,0 0,10" />
+    </group>
+    <group android:name="arrow">
+        <path
+            android:name="arrow"
+            android:fillColor="#ffffff"
+            android:pathData="
+            M 20,11
+            l5,2 l2,-5" />
+    </group>
+
+</vector>
