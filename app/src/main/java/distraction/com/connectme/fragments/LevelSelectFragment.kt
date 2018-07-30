@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import distraction.com.connectme.R
+import distraction.com.connectme.data.LevelData
 import kotlinx.android.synthetic.main.fragment_level_select.*
 import kotlinx.android.synthetic.main.level_list_item.view.*
 
@@ -38,8 +39,10 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<Strin
     }
 
     override fun onItemClick(data: String, index: Int) {
-        fragmentListener?.changeFragment(LevelFragment.newInstance(index + 1))
+        fragmentListener?.changeFragment(LevelFragment.newInstance(createLevelData(index + 1)))
     }
+
+    fun createLevelData(level: Int) = LevelData(level, intArrayOf(0, 0, 0, 1, 2, 2, 0, 1, 1), 3, 0)
 
 }
 

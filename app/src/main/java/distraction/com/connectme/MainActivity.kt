@@ -10,9 +10,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 fun FragmentManager.transaction(layout: Int, f: Fragment, tag: String = f.javaClass.simpleName, backstack: Boolean = true, animate: Boolean = true) {
     beginTransaction()
-            .also { if (animate) it.setCustomAnimations(R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right) }
+            .apply {
+                if (animate) setCustomAnimations(R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right)
+                if (backstack) addToBackStack(tag)
+            }
             .replace(layout, f)
-            .also { if (backstack) it.addToBackStack(tag) }
             .commit()
 }
 

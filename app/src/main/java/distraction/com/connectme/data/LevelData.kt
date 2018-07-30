@@ -1,0 +1,31 @@
+package distraction.com.connectme.data
+
+import android.os.Parcel
+import android.os.Parcelable
+
+data class LevelData(val level: Int, val grid: IntArray, val target: Int, val best: Int) : Parcelable {
+    constructor(parcel: Parcel) : this(
+            parcel.readInt(),
+            parcel.createIntArray(),
+            parcel.readInt(),
+            parcel.readInt())
+
+    override fun writeToParcel(parcel: Parcel?, flags: Int) {
+        parcel?.writeInt(level)
+        parcel?.writeIntArray(grid)
+        parcel?.writeInt(target)
+        parcel?.writeInt(best)
+    }
+
+    override fun describeContents(): Int = 0
+
+    companion object CREATOR : Parcelable.Creator<LevelData> {
+        override fun createFromParcel(parcel: Parcel): LevelData {
+            return LevelData(parcel)
+        }
+
+        override fun newArray(size: Int): Array<LevelData?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
