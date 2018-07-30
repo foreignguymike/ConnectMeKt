@@ -42,19 +42,16 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<Strin
         fragmentListener?.changeFragment(LevelFragment.newInstance(createLevelData(index + 1)))
     }
 
-    fun createLevelData(level: Int) = LevelData(level, intArrayOf(0, 0, 0, 1, 2, 2, 0, 1, 1), 3, 0)
+    fun createLevelData(level: Int) = LevelData(level, 3, 3, intArrayOf(2, 0, 0, 1, 2, 0, 1, 1, 1), 3, 0)
 
 }
 
 class LevelAdapter(private val context: Context, private val data: List<String>, private val itemClickListener: ItemClickListener<String>) : RecyclerView.Adapter<LevelAdapter.LevelViewHolder>() {
-    private var numViewHolders: Int = 0
     interface ItemClickListener<in T> {
         fun onItemClick(data: T, index: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LevelViewHolder {
-        numViewHolders++
-        Log.d("LevelAdapter", "onCreateViewHolder numViewHolders = $numViewHolders")
         return LevelViewHolder(LayoutInflater.from(context).inflate(R.layout.level_list_item, parent, false))
     }
 
