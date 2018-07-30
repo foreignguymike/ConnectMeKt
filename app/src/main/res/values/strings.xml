@@ -7,4 +7,9 @@
     <string name="best">Best</string>
     <string name="level_select">Level Select</string>
     <string name="level_number">Level %d</string>
+
+    <string name="target_number">Target\n%1$s</string>
+    <string name="moves_number">Moves\n%1$s</string>
+    <string name="best_number">Best\n%1$s</string>
+    <string name="blank">-</string>
 </resources>

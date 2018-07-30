@@ -13,14 +13,47 @@
         android:layout_height="wrap_content"
         tools:text="Level 1"/>
 
-    <TextView
-        android:id="@+id/testTextView"
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/viewPadding"
-        android:layout_marginTop="@dimen/viewPadding"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67"/>
+
+    <TextView
+        android:id="@+id/targetTextView"
+        style="@style/roundRectTextView"
+        android:layout_marginTop="20dp"
+        android:text="@string/target_number"
+        android:layout_marginLeft="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerTextView"
-        tools:text="huuhh"/>
+        app:layout_constraintRight_toLeftOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/headerTextView"/>
+
+    <TextView
+        android:id="@+id/bestTextView"
+        style="@style/roundRectTextView"
+        android:text="@string/best_number"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintLeft_toRightOf="@id/guideline1"
+        app:layout_constraintRight_toLeftOf="@id/guideline2"
+        app:layout_constraintTop_toTopOf="@id/targetTextView"/>
+
+    <TextView
+        android:id="@+id/movesTextView"
+        style="@style/roundRectTextView"
+        android:text="@string/moves_number"
+        android:layout_marginRight="20dp"
+        app:layout_constraintLeft_toRightOf="@id/guideline2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/targetTextView"/>
 
 </android.support.constraint.ConstraintLayout>

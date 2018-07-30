@@ -36,7 +36,9 @@ class LevelFragment : BaseFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        testTextView.text = resources.getString(R.string.level_number, level)
         headerTextView.text = resources.getString(R.string.level_number, level)
+        targetTextView.text = resources.getString(R.string.target_number, 4.toString())
+        bestTextView.text = resources.getString(R.string.best_number, resources.getString(R.string.blank))
+        movesTextView.text = resources.getString(R.string.moves_number, 0.toString())
     }
 }
