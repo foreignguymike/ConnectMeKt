@@ -1,6 +1,8 @@
 package distraction.com.connectme.fragments
 
+import android.app.Activity
 import android.content.Context
+import android.graphics.Point
 import android.graphics.drawable.GradientDrawable
 import android.support.annotation.ColorRes
 import android.support.v4.app.Fragment
@@ -27,3 +29,7 @@ fun View.setBackgroundTint(color: Int) {
 }
 
 fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, color)
+
+fun Activity.getScreenSize(): Point = Point().apply { windowManager.defaultDisplay.getSize(this) }
+
+inline fun <T> forEach(vararg elements: T, f: (T) -> Unit) = elements.forEach { f(it) }

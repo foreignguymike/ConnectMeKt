@@ -31,11 +31,11 @@
         android:id="@+id/targetTextView"
         style="@style/roundRectTextView"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
         android:text="@string/target_number"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/headerTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/headerTextView"
+        app:layout_constraintBottom_toTopOf="@id/gridLayout"/>
 
     <TextView
         android:id="@+id/bestTextView"
@@ -60,7 +60,6 @@
         android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/viewPadding"
         android:background="@drawable/rounded_rect"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -37,10 +37,9 @@ class LevelFragment : BaseFragment() {
         bestTextView.text = resources.getString(R.string.best_number, if (data.best > 0) data.best.toString() else "-")
         movesTextView.text = resources.getString(R.string.moves_number, 0.toString())
 
-        targetTextView.setBackgroundTint(context.getColorCompat(R.color.colorPrimary))
-        bestTextView.setBackgroundTint(context.getColorCompat(R.color.colorPrimary))
-        movesTextView.setBackgroundTint(context.getColorCompat(R.color.colorPrimary))
-        gridLayout.setBackgroundTint(context.getColorCompat(R.color.colorPrimary))
+        forEach(targetTextView, bestTextView, movesTextView, gridLayout) {
+            it.setBackgroundTint(context.getColorCompat(R.color.colorPrimary))
+        }
 
         createGrid(gridLayout, data.numRows, data.numCols, data.grid)
     }
@@ -48,9 +47,7 @@ class LevelFragment : BaseFragment() {
     fun createGrid(layout: GridLayout, numRows: Int, numCols: Int, grid: IntArray) {
         layout.removeAllViews()
 
-        val display = activity.windowManager.defaultDisplay
-        val size = Point()
-        display.getSize(size)
+        val size = activity.getScreenSize()
         val cellSize = Math.round(if (size.x < size.y) size.x * SCREEN_PADDING_RATIO else size.y * SCREEN_PADDING_RATIO) / numCols
         val padding = Math.round(cellSize * CELL_PADDING_RATIO)
 
