@@ -2,8 +2,7 @@ package distraction.com.connectme.utils
 
 import android.content.Context
 import com.google.gson.Gson
-
-data class LevelData(val level: Int, val target: Int, val numRows: Int, val numCols: Int, val grid: IntArray)
+import distraction.com.connectme.data.LevelData
 
 object Res {
 

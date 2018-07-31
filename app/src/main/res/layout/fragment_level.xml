@@ -14,15 +14,26 @@
         tools:text="Level 1"/>
 
     <ImageView
-        android:id="@+id/refreshButton"
+        android:id="@+id/nextLevelButton"
         android:layout_width="@dimen/headerHeight"
         android:layout_height="@dimen/headerHeight"
         android:layout_marginRight="@dimen/viewPadding"
-        android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:src="@drawable/refresh"
+        android:paddingTop="10dp"
+        android:src="@drawable/next_arrow"
         app:layout_constraintBottom_toBottomOf="@id/headerTextView"
         app:layout_constraintRight_toRightOf="@id/headerTextView"
+        app:layout_constraintTop_toTopOf="@id/headerTextView"/>
+
+    <ImageView
+        android:id="@+id/refreshButton"
+        android:layout_width="@dimen/headerHeight"
+        android:layout_height="@dimen/headerHeight"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/refresh"
+        app:layout_constraintBottom_toBottomOf="@id/headerTextView"
+        app:layout_constraintRight_toLeftOf="@id/nextLevelButton"
         app:layout_constraintTop_toTopOf="@id/headerTextView"/>
 
     <android.support.constraint.Guideline

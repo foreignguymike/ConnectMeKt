@@ -17,7 +17,7 @@ private const val CELL_PADDING_RATIO = 0.05f
 private const val DURATION = 100L
 
 interface GridListener {
-    fun onMove(grid: IntArray)
+    fun onMove(arr: IntArray)
 }
 
 class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
@@ -26,6 +26,11 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
     private var gridListener: GridListener? = null
     private lateinit var grid: IntArray
     private var selectedView: View? = null
+
+    var solved = false
+    private var numRows = 0
+    private var numCols = 0
+
 
     init {
         if (context !is Activity) {
@@ -38,8 +43,11 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
     }
 
     fun createGrid(numRows: Int, numCols: Int, grid: IntArray) {
+        this.numRows = numRows
+        this.numCols = numCols
         this.grid = grid.copyOf()
 
+        solved = false
         removeAllViews()
 
         val size = (context as Activity).getScreenSize()
@@ -82,6 +90,9 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
     }
 
     override fun onTouch(view: View?, e: MotionEvent?): Boolean {
+        if (solved) {
+            return false
+        }
         when (e?.action) {
             MotionEvent.ACTION_DOWN -> {
                 selectedView = view
@@ -131,6 +142,7 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
         val temp = grid[index1]
         grid[index1] = grid[index2]
         grid[index2] = temp
+        solved = solved(to2D(grid, numRows, numCols))
         gridListener?.onMove(grid)
     }
 

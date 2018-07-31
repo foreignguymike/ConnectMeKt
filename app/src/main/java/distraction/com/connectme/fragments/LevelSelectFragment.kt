@@ -38,13 +38,7 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<Strin
     }
 
     override fun onItemClick(data: String, index: Int) {
-        fragmentListener?.changeFragment(LevelFragment.newInstance(createLevelData(index + 1)))
-    }
-
-    fun createLevelData(level: Int): LevelData {
-        with (Res.levelData!![level]) {
-            return LevelData(level, numRows, numCols, grid, target, 0)
-        }
+        fragmentListener?.changeFragment(LevelFragment.newInstance(index + 1))
     }
 
 }

@@ -3,22 +3,20 @@ package distraction.com.connectme.data
 import android.os.Parcel
 import android.os.Parcelable
 
-data class LevelData(val level: Int, val numRows: Int, val numCols: Int, val grid: IntArray, val target: Int, val best: Int) : Parcelable {
+data class LevelData(val level: Int, val target: Int, val numRows: Int, val numCols: Int, val grid: IntArray) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readInt(),
             parcel.readInt(),
             parcel.readInt(),
-            parcel.createIntArray(),
             parcel.readInt(),
-            parcel.readInt())
+            parcel.createIntArray())
 
     override fun writeToParcel(parcel: Parcel?, flags: Int) {
         parcel?.writeInt(level)
+        parcel?.writeInt(target)
         parcel?.writeInt(numRows)
         parcel?.writeInt(numCols)
         parcel?.writeIntArray(grid)
-        parcel?.writeInt(target)
-        parcel?.writeInt(best)
     }
 
     override fun describeContents(): Int = 0

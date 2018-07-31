@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), BaseFragment.FragmentListener {
         supportFragmentManager.transaction(container.id, TitleScreenFragment.newInstance(), backstack = false, animate = false)
     }
 
-    override fun changeFragment(fragment: Fragment) {
-        supportFragmentManager.transaction(container.id, fragment)
+    override fun changeFragment(fragment: Fragment, backstack: Boolean) {
+        supportFragmentManager.transaction(container.id, fragment, backstack = backstack)
     }
 }

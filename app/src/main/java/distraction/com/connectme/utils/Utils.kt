@@ -56,7 +56,7 @@ fun to2D(arr: IntArray, numRows: Int, numCols: Int): Array<IntArray> {
     return grid
 }
 
-fun solved(grid: Array<IntArray>, range: Int):Boolean {
+fun solved(grid: Array<IntArray>, range: Int = 3):Boolean {
     val numRows = grid.size
     val numCols = grid[0].size
     val visited = Array(numRows) { BooleanArray(numCols) }
