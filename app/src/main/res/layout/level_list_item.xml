@@ -27,12 +27,23 @@
         tools:text="level 100"/>
 
     <TextView
+        android:id="@+id/sizeTextView"
         style="@style/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/guideline1"
         app:layout_constraintTop_toTopOf="@id/levelTextView"
         tools:text="3x3"/>
+
+    <TextView
+        android:id="@+id/targetTextView"
+        style="@style/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/viewPadding"
+        app:layout_constraintLeft_toRightOf="@id/sizeTextView"
+        app:layout_constraintTop_toTopOf="@id/levelTextView"
+        tools:text="Target: 3"/>
 
     <ImageView
         android:id="@+id/starImage1"

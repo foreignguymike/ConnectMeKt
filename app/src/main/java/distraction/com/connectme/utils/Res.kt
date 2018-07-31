@@ -14,6 +14,9 @@ object Res {
         stream.read(buffer)
         val str = String(buffer)
         levelData = Gson().fromJson(str, Array<LevelData>::class.java).toList()
+        levelData?.forEach {
+            it.best = getScore(context, it.level)
+        }
     }
 
 }

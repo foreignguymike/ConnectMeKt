@@ -35,7 +35,7 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener {
     }
 
     override fun onItemClick(data: LevelData, index: Int) {
-        fragmentListener?.changeFragment(LevelFragment.newInstance(index + 1))
+        fragmentListener?.changeFragment(LevelFragment.newInstance(data.level))
     }
 
 }
@@ -57,7 +57,9 @@ class LevelAdapter(private val context: Context, private val data: List<LevelDat
         val data = data[position]
         holder?.itemView?.apply {
             setBackgroundColor(if (position % 2 == 0) context.getColorCompat(R.color.white) else context.getColorCompat(R.color.gray))
-            levelTextView?.text = resources.getString(R.string.level_number, data.level)
+            levelTextView.text = resources.getString(R.string.level_number, data.level)
+            sizeTextView.text = resources.getString(R.string.sizexsize, data.numRows, data.numCols)
+            targetTextView.text = resources.getString(R.string.target_number_2, data.target)
 
             with(getScore(context, data.level)) {
                 starImage2.visibility = if (this > 0) View.VISIBLE else View.INVISIBLE

@@ -8,8 +8,10 @@
     <string name="level_select">Level Select</string>
     <string name="level_number">Level %d</string>
 
-    <string name="target_number">Target\n%1$s</string>
-    <string name="moves_number">Moves\n%1$s</string>
+    <string name="target_number">Target\n%1$d</string>
+    <string name="moves_number">Moves\n%1$d</string>
     <string name="best_number">Best\n%1$s</string>
     <string name="blank">-</string>
+    <string name="target_number_2">Target: %1$d</string>
+    <string name="sizexsize">%1$dx%2$d</string>
 </resources>

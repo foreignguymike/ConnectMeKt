@@ -44,6 +44,8 @@ fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, 
 
 fun Activity.getScreenSize() = Point().apply { windowManager.defaultDisplay.getSize(this) }
 
+inline fun <T> forEach(vararg elements: T, f: (T) -> Unit) { elements.forEach { f(it) } }
+
 fun to2D(arr: IntArray, numRows: Int, numCols: Int): Array<IntArray> {
     val grid = Array(numRows) { IntArray(numCols) }
     arr.forEachIndexed { index, it ->
