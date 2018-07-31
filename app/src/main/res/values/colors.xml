@@ -6,6 +6,8 @@
     <color name="black">#101010</color>
     <color name="white">#ffffff</color>
     <color name="gray">#e8f0f8</color>
+    <color name="silver">#c0c0c0</color>
+    <color name="gold">#ffd760</color>
 
     <color name="red">#d06060</color>
     <color name="green">#60d060</color>

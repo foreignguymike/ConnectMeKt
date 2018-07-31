@@ -96,9 +96,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_rect"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/starImage1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/targetTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/targetTextView"
+        tools:layout_height="300dp"
+        tools:layout_width="300dp"/>
+
+    <ImageView
+        android:id="@+id/starImage1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/star"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/starImage2"
+        app:layout_constraintTop_toBottomOf="@id/grid"
+        tools:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/starImage2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="@dimen/viewPadding"
+        android:src="@drawable/star"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/starImage1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/grid"
+        tools:visibility="visible"/>
 
 </android.support.constraint.ConstraintLayout>

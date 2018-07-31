@@ -11,10 +11,11 @@ import distraction.com.connectme.R
 import distraction.com.connectme.data.LevelData
 import distraction.com.connectme.utils.Res
 import distraction.com.connectme.utils.getColorCompat
+import distraction.com.connectme.utils.getScore
 import kotlinx.android.synthetic.main.fragment_level_select.*
 import kotlinx.android.synthetic.main.level_list_item.view.*
 
-class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<String> {
+class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener {
 
     companion object {
         fun newInstance() = LevelSelectFragment()
@@ -29,23 +30,19 @@ class LevelSelectFragment : BaseFragment(), LevelAdapter.ItemClickListener<Strin
 
         Res.init(context)
 
-        val data: MutableList<String> = MutableList(Res.levelData!!.size, {
-            "Level ${it + 1}"
-        })
-
-        levelRecyclerView.adapter = LevelAdapter(context, data, this)
+        levelRecyclerView.adapter = LevelAdapter(context, Res.levelData!!, this)
         levelRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
-    override fun onItemClick(data: String, index: Int) {
+    override fun onItemClick(data: LevelData, index: Int) {
         fragmentListener?.changeFragment(LevelFragment.newInstance(index + 1))
     }
 
 }
 
-class LevelAdapter(private val context: Context, private val data: List<String>, private val itemClickListener: ItemClickListener<String>) : RecyclerView.Adapter<LevelAdapter.LevelViewHolder>() {
-    interface ItemClickListener<in T> {
-        fun onItemClick(data: T, index: Int)
+class LevelAdapter(private val context: Context, private val data: List<LevelData>, private val itemClickListener: ItemClickListener) : RecyclerView.Adapter<LevelAdapter.LevelViewHolder>() {
+    interface ItemClickListener {
+        fun onItemClick(data: LevelData, index: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LevelViewHolder {
@@ -59,8 +56,13 @@ class LevelAdapter(private val context: Context, private val data: List<String>,
     override fun onBindViewHolder(holder: LevelViewHolder?, position: Int) {
         val data = data[position]
         holder?.itemView?.apply {
-            levelTextView?.text = data
             setBackgroundColor(if (position % 2 == 0) context.getColorCompat(R.color.white) else context.getColorCompat(R.color.gray))
+            levelTextView?.text = resources.getString(R.string.level_number, data.level)
+
+            with(getScore(context, data.level)) {
+                starImage2.visibility = if (this > 0) View.VISIBLE else View.INVISIBLE
+                starImage1.visibility = if (this == data.target) View.VISIBLE else View.INVISIBLE
+            }
         }
     }
 

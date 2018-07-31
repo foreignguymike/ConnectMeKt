@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
 import distraction.com.connectme.R
-import distraction.com.connectme.utils.Res
-import distraction.com.connectme.utils.getColorCompat
-import distraction.com.connectme.utils.setBackgroundTint
+import distraction.com.connectme.utils.*
 import distraction.com.connectme.views.GridListener
 import kotlinx.android.synthetic.main.fragment_level.*
 
 private const val KEY_LEVEL = "level"
-private const val KEY_BEST = "best"
 
 class LevelFragment : BaseFragment(), GridListener {
     private val level by lazy {
@@ -26,21 +25,21 @@ class LevelFragment : BaseFragment(), GridListener {
     private var moves = 0
 
     companion object {
-        fun newInstance(level: Int, best: Int = 0) = LevelFragment().apply {
+        fun newInstance(level: Int) = LevelFragment().apply {
             arguments = Bundle().apply {
                 putInt(KEY_LEVEL, level)
-                putInt(KEY_BEST, best)
             }
         }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        best = arguments.getInt(KEY_BEST)
         return inflater.inflate(R.layout.fragment_level, container, false)
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        best = getScore(context, level)
 
         headerTextView.text = resources.getString(R.string.level_number, data.level)
         targetTextView.text = resources.getString(R.string.target_number, data.target.toString())
@@ -67,7 +66,9 @@ class LevelFragment : BaseFragment(), GridListener {
             if (best == 0 || best > moves) {
                 best = moves
                 bestTextView.text = resources.getString(R.string.best_number, best.toString())
+                saveScore(context, level, best)
             }
+            showScore()
         }
     }
 
@@ -75,5 +76,30 @@ class LevelFragment : BaseFragment(), GridListener {
         grid.createGrid(data.numRows, data.numCols, data.grid)
         moves = 0
         movesTextView.text = resources.getString(R.string.moves_number, (moves).toString())
+        starImage1.visibility = View.INVISIBLE
+        starImage2.visibility = View.INVISIBLE
+    }
+
+    private fun showScore() {
+        starImage1.visibility = View.VISIBLE
+        starImage2.visibility = View.VISIBLE
+        with(moves) {
+            starImage2.visibility = if (this > 0) View.VISIBLE else View.INVISIBLE
+            starImage1.visibility = if (this == data.target) View.VISIBLE else View.INVISIBLE
+        }
+        ScaleAnimation(
+                50f, 1f, 50f, 1f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f).apply {
+            duration = 200
+            starImage1.startAnimation(this)
+        }
+        ScaleAnimation(
+                50f, 1f, 50f, 1f,
+                Animation.RELATIVE_TO_SELF, 0.5f,
+                Animation.RELATIVE_TO_SELF, 0.5f).apply {
+            duration = 200
+            starImage2.startAnimation(this)
+        }
     }
 }

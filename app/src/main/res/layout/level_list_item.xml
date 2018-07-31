@@ -1,33 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/viewPadding">
+    tools:background="@color/gray">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33"/>
 
     <TextView
-        style="@style/text"
         android:id="@+id/levelTextView"
+        style="@style/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="level 1"/>
+        android:layout_margin="@dimen/viewPadding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="level 100"/>
 
     <TextView
         style="@style/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:text="@string/complete"/>
+        app:layout_constraintLeft_toRightOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="@id/levelTextView"
+        tools:text="3x3"/>
 
-    <TextView
-        style="@style/text"
+    <ImageView
+        android:id="@+id/starImage1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:text="@string/best"/>
+        android:src="@drawable/star"
+        app:layout_constraintBottom_toBottomOf="@id/starImage2"
+        app:layout_constraintRight_toLeftOf="@id/starImage2"/>
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/starImage2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/viewPadding"
+        android:src="@drawable/star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

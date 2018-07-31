@@ -44,8 +44,6 @@ fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, 
 
 fun Activity.getScreenSize() = Point().apply { windowManager.defaultDisplay.getSize(this) }
 
-inline fun <T> forEach(vararg elements: T, func: (T) -> Unit) = elements.forEach { func(it) }
-
 fun to2D(arr: IntArray, numRows: Int, numCols: Int): Array<IntArray> {
     val grid = Array(numRows) { IntArray(numCols) }
     arr.forEachIndexed { index, it ->
@@ -56,7 +54,7 @@ fun to2D(arr: IntArray, numRows: Int, numCols: Int): Array<IntArray> {
     return grid
 }
 
-fun solved(grid: Array<IntArray>, range: Int = 3):Boolean {
+fun solved(grid: Array<IntArray>, range: Int = 3): Boolean {
     val numRows = grid.size
     val numCols = grid[0].size
     val visited = Array(numRows) { BooleanArray(numCols) }
@@ -114,3 +112,13 @@ private fun bfs(grid: Array<IntArray>, visited: Array<BooleanArray>, r: Int, c: 
         }
     }
 }
+
+private const val KEY_SCORE = "score"
+fun saveScore(context: Context, level: Int, moves: Int) {
+    with (context.getSharedPreferences(KEY_SCORE, Context.MODE_PRIVATE).edit()) {
+        putInt(level.toString(), moves)
+        apply()
+    }
+}
+fun getScore(context: Context, level: Int) =
+        context.getSharedPreferences(KEY_SCORE, Context.MODE_PRIVATE).getInt(level.toString(), 0)
