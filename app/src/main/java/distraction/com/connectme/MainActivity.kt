@@ -20,4 +20,15 @@ class MainActivity : AppCompatActivity(), BaseFragment.FragmentListener {
     override fun changeFragment(fragment: Fragment, backstack: Boolean) {
         supportFragmentManager.transaction(container.id, fragment, backstack = backstack)
     }
+
+    override fun onBackPressed() {
+        with(supportFragmentManager) {
+            if (fragments.size > 0) {
+                beginTransaction().remove(findFragmentById(container.id)).commit()
+                popBackStack()
+                return
+            }
+        }
+        super.onBackPressed()
+    }
 }

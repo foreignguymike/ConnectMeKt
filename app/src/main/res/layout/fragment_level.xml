@@ -6,6 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@id/targetTextView"/>
+
     <TextView
         android:id="@+id/headerTextView"
         style="@style/headerTextView"
@@ -21,7 +27,6 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:src="@drawable/next_arrow"
-        app:layout_constraintBottom_toBottomOf="@id/headerTextView"
         app:layout_constraintRight_toRightOf="@id/headerTextView"
         app:layout_constraintTop_toTopOf="@id/headerTextView"/>
 
@@ -32,7 +37,6 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
         android:src="@drawable/refresh"
-        app:layout_constraintBottom_toBottomOf="@id/headerTextView"
         app:layout_constraintRight_toLeftOf="@id/nextLevelButton"
         app:layout_constraintTop_toTopOf="@id/headerTextView"/>
 
@@ -52,32 +56,40 @@
 
     <TextView
         android:id="@+id/targetTextView"
-        style="@style/roundRectTextView"
+        style="@style/itemTextView"
         android:layout_marginLeft="20dp"
         android:text="@string/target_number"
-        app:layout_constraintBottom_toTopOf="@id/grid"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/guideline1"
-        app:layout_constraintTop_toBottomOf="@id/headerTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/headerTextView"
+        tools:backgroundTint="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/bestTextView"
-        style="@style/roundRectTextView"
+        style="@style/itemTextView"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="@string/best_number"
         app:layout_constraintLeft_toRightOf="@id/guideline1"
         app:layout_constraintRight_toLeftOf="@id/guideline2"
-        app:layout_constraintTop_toTopOf="@id/targetTextView"/>
+        app:layout_constraintTop_toTopOf="@id/targetTextView"
+        tools:backgroundTint="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/movesTextView"
-        style="@style/roundRectTextView"
+        style="@style/itemTextView"
         android:layout_marginRight="20dp"
         android:text="@string/moves_number"
         app:layout_constraintLeft_toRightOf="@id/guideline2"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/targetTextView"/>
+        app:layout_constraintTop_toTopOf="@id/targetTextView"
+        tools:backgroundTint="@color/colorPrimary"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/headerTextView"/>
 
     <distraction.com.connectme.views.Grid
         android:id="@+id/grid"

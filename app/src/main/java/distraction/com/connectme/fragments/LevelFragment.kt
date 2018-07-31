@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import distraction.com.connectme.R
 import distraction.com.connectme.utils.Res
-import distraction.com.connectme.utils.forEach
 import distraction.com.connectme.utils.getColorCompat
 import distraction.com.connectme.utils.setBackgroundTint
 import distraction.com.connectme.views.GridListener
@@ -48,9 +47,7 @@ class LevelFragment : BaseFragment(), GridListener {
         bestTextView.text = resources.getString(R.string.best_number, if (best > 0) best.toString() else "-")
         movesTextView.text = resources.getString(R.string.moves_number, moves.toString())
 
-        forEach(targetTextView, bestTextView, movesTextView, grid) {
-            it.setBackgroundTint(context.getColorCompat(R.color.colorPrimary))
-        }
+        grid.setBackgroundTint(context.getColorCompat(R.color.colorPrimary))
 
         refreshButton.setOnClickListener {
             init()

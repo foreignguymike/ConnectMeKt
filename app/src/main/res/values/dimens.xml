@@ -8,5 +8,6 @@
     <!-- views -->
     <dimen name="viewPadding">20dp</dimen>
     <dimen name="headerHeight">60dp</dimen>
+    <dimen name="headerHeightLarge">140dp</dimen>
 
 </resources>
