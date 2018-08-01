@@ -29,8 +29,8 @@ fun FragmentManager.transaction(
                     }
                 }
                 if (backstack) addToBackStack(tag)
+                replace(layout, f)
             }
-            .replace(layout, f)
             .commit()
 }
 
@@ -56,16 +56,12 @@ fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, 
 
 fun Activity.getScreenSize() = Point().apply { windowManager.defaultDisplay.getSize(this) }
 
-inline fun <T> forEach(vararg elements: T, f: (T) -> Unit) {
-    elements.forEach { f(it) }
-}
-
-inline fun <T> Iterable<T>.multiFilter(vararg predicate: (T) -> Boolean): List<T> {
+fun <T> Iterable<T>.multiFilter(vararg filter: (T) -> Boolean): List<T> {
     val ret = ArrayList<T>()
     for (element in this) {
-        var all: Boolean = true
-        for (p in predicate) {
-            all = p(element)
+        var all = true
+        for (f in filter) {
+            all = f(element)
             if (!all) break
         }
         if (all) ret.add(element)

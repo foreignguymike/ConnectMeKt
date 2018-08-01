@@ -16,4 +16,9 @@
     <string name="sizexsize">%1$dx%2$d</string>
     <string name="grid_size">Grid size:</string>
     <string name="target">Target:</string>
+    <string name="completed">Completed:</string>
+    <string name="all">All</string>
+    <string name="finished">Finished</string>
+    <string name="unfinished">Unfinished</string>
+    <string name="not_best">Not Best</string>
 </resources>

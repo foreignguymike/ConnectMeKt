@@ -38,8 +38,7 @@ class LevelAdapter(private val context: Context, private var data: List<LevelDat
             targetTextView.text = resources.getString(R.string.target_number_2, data.target)
 
             with(getScore(context, data.level)) {
-                starImage2.visibility = if (this > 0) View.VISIBLE else View.INVISIBLE
-                starImage1.visibility = if (this == data.target) View.VISIBLE else View.INVISIBLE
+                starImage.setImageResource(if (this == data.target) R.drawable.star else if (this > 0) R.drawable.star_silver else R.drawable.star_empty)
             }
         }
     }

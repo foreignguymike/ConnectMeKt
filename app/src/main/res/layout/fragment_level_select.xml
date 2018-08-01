@@ -6,10 +6,11 @@
     android:layout_height="match_parent">
 
     <View
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@id/gridSizeTextView"/>
+        app:layout_constraintBottom_toBottomOf="@id/completeTextView"/>
 
     <TextView
         android:id="@+id/headerTextView"
@@ -44,11 +45,23 @@
         app:layout_constraintLeft_toRightOf="@id/guideline1"
         app:layout_constraintTop_toTopOf="@id/gridSizeTextView"/>
 
+    <TextView
+        android:id="@+id/completeTextView"
+        style="@style/itemTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/viewPadding"
+        android:text="@string/completed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gridSizeTextView"/>
+
     <Spinner
         android:id="@+id/gridSizeSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/viewPadding"
+        android:background="@null"
+        android:paddingLeft="@dimen/viewPadding"
+        android:paddingRight="@dimen/viewPadding"
         app:layout_constraintBottom_toBottomOf="@id/gridSizeTextView"
         app:layout_constraintLeft_toRightOf="@id/gridSizeTextView"
         app:layout_constraintTop_toTopOf="@id/gridSizeTextView"/>
@@ -57,15 +70,43 @@
         android:id="@+id/targetSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/viewPadding"
+        android:background="@null"
+        android:paddingLeft="@dimen/viewPadding"
+        android:paddingRight="@dimen/viewPadding"
         app:layout_constraintLeft_toRightOf="@id/targetTextView"
         app:layout_constraintTop_toTopOf="@id/gridSizeSpinner"/>
+
+    <Spinner
+        android:id="@+id/completeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:paddingLeft="@dimen/viewPadding"
+        android:paddingRight="@dimen/viewPadding"
+        app:layout_constraintLeft_toRightOf="@id/completeTextView"
+        app:layout_constraintTop_toTopOf="@id/completeTextView"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/headerTextView"/>
+
+    <TextView
+        style="@style/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/viewPadding"
+        android:text="Nothing here!"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/levelRecyclerView"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/levelRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/gridSizeTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/header"/>
 
 </android.support.constraint.ConstraintLayout>

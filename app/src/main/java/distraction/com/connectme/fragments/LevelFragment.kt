@@ -113,16 +113,17 @@ class LevelFragment : BaseFragment(), GridListener {
     private fun showScore() {
         bar.visibility = View.VISIBLE
         with(moves) {
-            starImage2.visibility = if (this > 0) View.VISIBLE else View.GONE
-            starImage1.visibility = if (this == data.target) View.VISIBLE else View.GONE
+            starImage.visibility = View.VISIBLE
+            starImage.setImageResource(if (this == data.target) R.drawable.star else if (this > 0) R.drawable.star_silver else R.drawable.star_empty)
         }
-
-        forEach(starImage1, starImage2) { if (it.visibility == View.VISIBLE) it.startAnimation(starAnim) }
+        if (starImage.visibility == View.VISIBLE) {
+            starImage.startAnimation(starAnim)
+        }
         bar.startAnimation(barAnim)
     }
 
     private fun hideScore() {
-        forEach(starImage1, starImage2) { it.visibility = View.GONE }
+        starImage.visibility = View.GONE
         bar.visibility = View.INVISIBLE
     }
 }

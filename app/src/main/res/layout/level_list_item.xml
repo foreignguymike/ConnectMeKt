@@ -45,20 +45,20 @@
         app:layout_constraintTop_toTopOf="@id/levelTextView"
         tools:text="Target: 3"/>
 
-    <ImageView
-        android:id="@+id/starImage1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/star"
-        app:layout_constraintBottom_toBottomOf="@id/starImage2"
-        app:layout_constraintRight_toLeftOf="@id/starImage2"/>
+    <!--<ImageView-->
+        <!--android:id="@+id/starImage1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/star"-->
+        <!--app:layout_constraintBottom_toBottomOf="@id/starImage2"-->
+        <!--app:layout_constraintRight_toLeftOf="@id/starImage2"/>-->
 
     <ImageView
-        android:id="@+id/starImage2"
+        android:id="@+id/starImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/viewPadding"
-        android:src="@drawable/star"
+        android:src="@drawable/star_empty"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
