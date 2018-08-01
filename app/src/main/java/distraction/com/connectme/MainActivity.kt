@@ -17,13 +17,15 @@ class MainActivity : AppCompatActivity(), BaseFragment.FragmentListener {
         supportFragmentManager.transaction(container.id, TitleScreenFragment.newInstance(), backstack = false, animate = false)
     }
 
-    override fun changeFragment(fragment: Fragment, backstack: Boolean) {
-        supportFragmentManager.transaction(container.id, fragment, backstack = backstack)
+    override fun changeFragment(fragment: Fragment, backstack: Boolean, reverse: Boolean) {
+        supportFragmentManager.transaction(container.id, fragment, backstack = backstack, reverse = reverse)
     }
 
     override fun onBackPressed() {
         with(supportFragmentManager) {
-            if (fragments.size > 0) {
+            if (fragments.size == 1 && findFragmentById(container.id) is TitleScreenFragment) {
+                super.onBackPressed()
+            } else if (fragments.size > 0) {
                 beginTransaction().remove(findFragmentById(container.id)).commit()
                 popBackStack()
                 return

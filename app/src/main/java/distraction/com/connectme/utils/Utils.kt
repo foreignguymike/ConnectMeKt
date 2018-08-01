@@ -12,10 +12,22 @@ import android.view.View
 import distraction.com.connectme.R
 import java.util.*
 
-fun FragmentManager.transaction(layout: Int, f: Fragment, tag: String = f.javaClass.simpleName, backstack: Boolean = true, animate: Boolean = true) {
+fun FragmentManager.transaction(
+        layout: Int,
+        f: Fragment,
+        tag: String = f.javaClass.simpleName,
+        backstack: Boolean = true,
+        animate: Boolean = true,
+        reverse: Boolean = false) {
     beginTransaction()
             .apply {
-                if (animate) setCustomAnimations(R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right)
+                if (animate) {
+                    if (reverse) {
+                        setCustomAnimations(R.anim.enter_right, R.anim.exit_right, R.anim.enter_left, R.anim.exit_left)
+                    } else {
+                        setCustomAnimations(R.anim.enter_left, R.anim.exit_left, R.anim.enter_right, R.anim.exit_right)
+                    }
+                }
                 if (backstack) addToBackStack(tag)
             }
             .replace(layout, f)
@@ -44,7 +56,9 @@ fun Context.getColorCompat(@ColorRes color: Int) = ContextCompat.getColor(this, 
 
 fun Activity.getScreenSize() = Point().apply { windowManager.defaultDisplay.getSize(this) }
 
-inline fun <T> forEach(vararg elements: T, f: (T) -> Unit) { elements.forEach { f(it) } }
+inline fun <T> forEach(vararg elements: T, f: (T) -> Unit) {
+    elements.forEach { f(it) }
+}
 
 fun to2D(arr: IntArray, numRows: Int, numCols: Int): Array<IntArray> {
     val grid = Array(numRows) { IntArray(numCols) }
@@ -117,10 +131,11 @@ private fun bfs(grid: Array<IntArray>, visited: Array<BooleanArray>, r: Int, c: 
 
 private const val KEY_SCORE = "score"
 fun saveScore(context: Context, level: Int, moves: Int) {
-    with (context.getSharedPreferences(KEY_SCORE, Context.MODE_PRIVATE).edit()) {
+    with(context.getSharedPreferences(KEY_SCORE, Context.MODE_PRIVATE).edit()) {
         putInt(level.toString(), moves)
         apply()
     }
 }
+
 fun getScore(context: Context, level: Int) =
         context.getSharedPreferences(KEY_SCORE, Context.MODE_PRIVATE).getInt(level.toString(), 0)

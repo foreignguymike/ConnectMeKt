@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment
 abstract class BaseFragment : Fragment() {
 
     interface FragmentListener {
-        fun changeFragment(fragment: Fragment, backstack: Boolean = true)
+        fun changeFragment(fragment: Fragment, backstack: Boolean = true, reverse: Boolean = false)
     }
 
     protected var fragmentListener: FragmentListener? = null
