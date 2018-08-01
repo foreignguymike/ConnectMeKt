@@ -60,6 +60,19 @@ inline fun <T> forEach(vararg elements: T, f: (T) -> Unit) {
     elements.forEach { f(it) }
 }
 
+inline fun <T> Iterable<T>.multiFilter(vararg predicate: (T) -> Boolean): List<T> {
+    val ret = ArrayList<T>()
+    for (element in this) {
+        var all: Boolean = true
+        for (p in predicate) {
+            all = p(element)
+            if (!all) break
+        }
+        if (all) ret.add(element)
+    }
+    return ret
+}
+
 fun to2D(arr: IntArray, numRows: Int, numCols: Int): Array<IntArray> {
     val grid = Array(numRows) { IntArray(numCols) }
     arr.forEachIndexed { index, it ->

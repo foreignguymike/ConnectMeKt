@@ -14,4 +14,6 @@
     <string name="blank">-</string>
     <string name="target_number_2">Target: %1$d</string>
     <string name="sizexsize">%1$dx%2$d</string>
+    <string name="grid_size">Grid size:</string>
+    <string name="target">Target:</string>
 </resources>
