@@ -79,7 +79,7 @@ class LevelFragment : BaseFragment(), GridListener {
                 fragmentListener?.changeFragment(LevelFragment.newInstance(data.level - 1), false, true)
             }
         }
-        if (data.level == Res.levelData!!.size - 1) {
+        if (data.level == Res.levelData!!.last().level) {
             nextLevelButton.visibility = View.INVISIBLE
         } else {
             nextLevelButton.setOnClickListener {

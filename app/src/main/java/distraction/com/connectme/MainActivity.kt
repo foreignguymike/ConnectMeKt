@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import distraction.com.connectme.fragments.BaseFragment
+import distraction.com.connectme.fragments.LevelFragment
 import distraction.com.connectme.fragments.TitleScreenFragment
 import distraction.com.connectme.utils.transaction
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,10 +24,9 @@ class MainActivity : AppCompatActivity(), BaseFragment.FragmentListener {
 
     override fun onBackPressed() {
         with(supportFragmentManager) {
-            if (fragments.size == 1 && findFragmentById(container.id) is TitleScreenFragment) {
-                super.onBackPressed()
-            } else if (fragments.size > 0) {
-                beginTransaction().remove(findFragmentById(container.id)).commit()
+            val frag = findFragmentById(container.id)
+            if (frag is LevelFragment) {
+                beginTransaction().remove(frag).commit()
                 popBackStack()
                 return
             }

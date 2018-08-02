@@ -110,9 +110,11 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
                     with(getChildAt(i)) {
                         if (view != this) {
                             containsPoint(e.rawX, e.rawY) {
-                                swap(selectedView!!, this)
-                                selectedView = null
-                                return true
+                                if (valid(selectedView!!, it)) {
+                                    swap(selectedView!!, this)
+                                    selectedView = null
+                                    return true
+                                }
                             }
                         }
                     }
@@ -146,6 +148,15 @@ class Grid @JvmOverloads constructor(context: Context, attrs: AttributeSet? = nu
         grid[index2] = temp
         solved = solved(to2D(grid, numRows, numCols))
         gridListener?.onMove(grid)
+    }
+
+    private fun valid(view1: View, view2: View): Boolean {
+        val index1 = view1.tag as Int
+        val index2 = view2.tag as Int
+        if (Math.abs(index1 - index2) == numCols) return true
+        if (index1 - 1 == index2 && index1 % numCols != 0) return true
+        if (index1 + 1 == index2 && index2 % numCols != 0) return true
+        return false
     }
 
 }
